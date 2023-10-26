@@ -14,7 +14,7 @@ int main()
 {
     std::cout << "Exercise 1-1 -----------------------------\n";
 
-    HR::Employee employee {
+    HR::Employee employee{
         .firstInitial = 'A',
         .lastInitial = 'B',
         .employeeNumber = 47,
@@ -25,7 +25,7 @@ int main()
     std::cout << std::format("Employee: {}{}", employee.firstInitial, employee.lastInitial) << std::endl;
     std::cout << std::format("Number: {}", employee.employeeNumber) << std::endl;
     std::cout << std::format("Salary: {}", employee.salary) << std::endl;
-    
+
     std::cout << "Exercise 1-2 -----------------------------\n";
     std::cout << format("Employee title: {}", getTitleName(employee.title)) << std::endl << std::endl;
 
@@ -36,13 +36,13 @@ int main()
         HR::Employee{'A', 'Z', 1, 100000, HR::Title::MANAGER}
     };
 
-    for (auto& employee : employees) {
+    for (const auto& employee : employees) {
         printEmployee(employee);
     }
 
     std::cout << "Exercise 1-4 -----------------------------\n";
     std::vector<HR::Employee> vecEmployees;
-    for (auto& employee : employees) {
+    for (const auto& employee : employees) {
         vecEmployees.push_back(employee);
     }
 
@@ -51,7 +51,7 @@ int main()
     airlineTicket.setFrequentFlyerNumber(555);
 
     std::cout << std::format("Ticket for {}, miles: {}, has rewards: {}",
-        airlineTicket.getPassengerName(), airlineTicket.getNumberOfMiles(), 
+        airlineTicket.getPassengerName(), airlineTicket.getNumberOfMiles(),
         airlineTicket.hasEliteSuperRewardStatus()) << std::endl;
 
     if (airlineTicket.getFrequentFlyerNumber()) {

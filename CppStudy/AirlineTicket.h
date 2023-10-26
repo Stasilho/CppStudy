@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <string_view>
 #include <optional>
 
 /**
@@ -18,11 +19,14 @@ class AirlineTicket
 public:
 
 	AirlineTicket();
-	AirlineTicket(const std::string& name, int numberOfMiles, bool hasEliteSuperRewardsStatus);
+	AirlineTicket(std::string_view name, int numberOfMiles, bool hasEliteSuperRewardsStatus);
 	AirlineTicket(const AirlineTicket& other);
-	~AirlineTicket();
+	AirlineTicket& operator= (const AirlineTicket& other) = default;
+	AirlineTicket(AirlineTicket&& other) = default;
+	AirlineTicket& operator= (AirlineTicket&& other) = default;
+	virtual ~AirlineTicket() = default;
 
-	double calculatePriceInDollars();
+	double calculatePriceInDollars() const;
 
 	std::string getPassengerName() const;
 	void setPassengerName(const std::string& name);
@@ -33,6 +37,6 @@ public:
 	bool hasEliteSuperRewardStatus() const;
 	void setHasEliteSuperRewardStatus(bool status);
 
-	std::optional<unsigned int> getFrequentFlyerNumber();
+	std::optional<unsigned int> getFrequentFlyerNumber() const;
 	void setFrequentFlyerNumber(unsigned int number);
 };

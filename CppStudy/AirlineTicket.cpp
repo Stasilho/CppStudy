@@ -4,7 +4,7 @@ AirlineTicket::AirlineTicket()
 {
 }
 
-AirlineTicket::AirlineTicket(const std::string& name, int numberOfMiles, bool hasEliteSuperRewardsStatus)
+AirlineTicket::AirlineTicket(std::string_view name, int numberOfMiles, bool hasEliteSuperRewardsStatus)
 	: m_passengerName{name}, 
 	m_numberOfMiles{numberOfMiles}, 
 	m_hasEliteSuperRewardsStatus{hasEliteSuperRewardsStatus}
@@ -12,17 +12,11 @@ AirlineTicket::AirlineTicket(const std::string& name, int numberOfMiles, bool ha
 }
 
 AirlineTicket::AirlineTicket(const AirlineTicket& other)
-{
-	m_passengerName = other.m_passengerName;
-	m_numberOfMiles = other.m_numberOfMiles;
-	m_hasEliteSuperRewardsStatus = other.m_hasEliteSuperRewardsStatus;
-}
-
-AirlineTicket::~AirlineTicket()
+	: AirlineTicket(other.m_passengerName, other.m_numberOfMiles, other.m_hasEliteSuperRewardsStatus)
 {
 }
 
-double AirlineTicket::calculatePriceInDollars()
+double AirlineTicket::calculatePriceInDollars() const
 {
 	return 0.0;
 }
@@ -57,7 +51,7 @@ void AirlineTicket::setHasEliteSuperRewardStatus(bool status)
 	m_hasEliteSuperRewardsStatus = status;
 }
 
-std::optional<unsigned int> AirlineTicket::getFrequentFlyerNumber()
+std::optional<unsigned int> AirlineTicket::getFrequentFlyerNumber() const
 {
 	return m_frequentFlyerNumber;
 }

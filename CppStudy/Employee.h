@@ -23,5 +23,5 @@ namespace HR
 
 	std::string getTitleName(Title title);
 
-	void printEmployee(Employee& employee);
+	void printEmployee(const Employee& employee);
 }

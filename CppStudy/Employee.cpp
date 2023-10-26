@@ -19,7 +19,7 @@ std::string HR::getTitleName(Title title)
 	}
 }
 
-void HR::printEmployee(Employee& employee)
+void HR::printEmployee(const Employee& employee)
 {
 	cout << format("Employee: {}{}", employee.firstInitial, employee.lastInitial) << endl;
 	cout << format("Number: {}", employee.employeeNumber) << endl;
