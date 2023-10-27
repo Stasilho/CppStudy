@@ -131,10 +131,12 @@
     <ClCompile Include="AirlineTicket.cpp" />
     <ClCompile Include="CppStudy.cpp" />
     <ClCompile Include="Employee.cpp" />
+    <ClCompile Include="Point3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AirlineTicket.h" />
     <ClInclude Include="Employee.h" />
+    <ClInclude Include="Point3D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
