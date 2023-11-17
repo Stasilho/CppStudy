@@ -6,57 +6,28 @@
 #include <string>
 #include <array>
 #include <vector>
+#include <memory>
 
-#include "Employee.h"
-#include "AirlineTicket.h"
+#include "Person.h"
 
 int main()
 {
-    std::cout << "Exercise 1-1 -----------------------------\n";
+    // Exercise 8-1
+    Person stackPerson { "Fedor", "Sumkin" };
+    auto heapPerson { std::make_unique<Person>("Vasja", "Pupkin") };
 
-    HR::Employee employee{
-        .firstInitial = 'A',
-        .lastInitial = 'B',
-        .employeeNumber = 47,
-        .salary = 100000,
-        .title = HR::Title::ENGINEER
-    };
+    // Exercise 8-2
+    //Person phoneBook[3]; 
+    // - doesn't compile because the lack of the default ctor for Person class.
+    // The default ctor is absent because the ctor with parameters is declared
 
-    std::cout << std::format("Employee: {}{}", employee.firstInitial, employee.lastInitial) << std::endl;
-    std::cout << std::format("Number: {}", employee.employeeNumber) << std::endl;
-    std::cout << std::format("Salary: {}", employee.salary) << std::endl;
+    // Exercise 8-3
+    Person anotherForCopy{ stackPerson };
+    Person anotherForAssignment;
+    anotherForAssignment = *heapPerson;
 
-    std::cout << "Exercise 1-2 -----------------------------\n";
-    std::cout << format("Employee title: {}", getTitleName(employee.title)) << std::endl << std::endl;
-
-    std::cout << "Exercise 1-3 -----------------------------\n";
-    std::array<HR::Employee, 3> employees{
-        HR::Employee{'A', 'X', 1, 60000, HR::Title::ENGINEER},
-        HR::Employee{'B', 'Y', 1, 80000, HR::Title::SENIOR_ENGINEER},
-        HR::Employee{'A', 'Z', 1, 100000, HR::Title::MANAGER}
-    };
-
-    for (const auto& employee : employees) {
-        printEmployee(employee);
-    }
-
-    std::cout << "Exercise 1-4 -----------------------------\n";
-    std::vector<HR::Employee> vecEmployees;
-    for (const auto& employee : employees) {
-        vecEmployees.push_back(employee);
-    }
-
-    std::cout << "Exercise 1-5, 1-6 ------------------------\n";
-    AirlineTicket airlineTicket{ "Fjodor Sumkin", 137, true };
-    airlineTicket.setFrequentFlyerNumber(555);
-
-    std::cout << std::format("Ticket for {}, miles: {}, has rewards: {}",
-        airlineTicket.getPassengerName(), airlineTicket.getNumberOfMiles(),
-        airlineTicket.hasEliteSuperRewardStatus()) << std::endl;
-
-    if (airlineTicket.getFrequentFlyerNumber()) {
-        std::cout << std::format("Frequent Flyer Number: {}", airlineTicket.getFrequentFlyerNumber().value()) << std::endl;
-    }
+    std::cout << std::format("Copied person: {}", anotherForCopy.getInitials()) << std::endl;
+    std::cout << std::format("Assigned person: {}", anotherForAssignment.getInitials()) << std::endl;
 
     return 0;
 }
